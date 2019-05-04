@@ -39,11 +39,7 @@ public class BrowserController {
                 }
             }
         }
-        Response data = new Response();
-        data.setData("未填写参数!");
-        data.setCode("1000");
-        data.setMsg("未填写参数!");
-
+        Response data = new Response("访问的服务需要身份验证,请引导到登录界面!");
         return data;
     }
 }

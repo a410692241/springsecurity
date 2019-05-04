@@ -12,6 +12,7 @@
     <modules>
         <module>security-bowerser</module>
         <module>service</module>
+        <module>security-core</module>
     </modules>
     <groupId>com.wei</groupId>
     <artifactId>springsecurity</artifactId>
@@ -19,7 +20,10 @@
     <packaging>pom</packaging>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
     </dependencies>
 

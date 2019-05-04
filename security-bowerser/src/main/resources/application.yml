@@ -13,3 +13,4 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:com/wei/mapper/*.xml
   type-aliases-package: classpath:com.wei.bo
+com.wei.security.browser.loginPage: /Login.html
