@@ -13,4 +13,5 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:com/wei/mapper/*.xml
   type-aliases-package: classpath:com.wei.bo
+#配置放行登录界面的url,当系统访问此页面的时候,不会弹出(访问的服务需要身份验证)
 com.wei.security.browser.loginPage: /Login.html
