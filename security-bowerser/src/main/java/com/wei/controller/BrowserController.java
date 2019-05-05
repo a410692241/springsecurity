@@ -33,7 +33,7 @@ public class BrowserController {
             System.out.println("引发跳转的请求是:" + redirectUrl);
             if (StringUtils.endsWithIgnoreCase(redirectUrl, ".html")) {
                 try {
-                    defaultRedirectStrategy.sendRedirect(request,response, "");
+                    defaultRedirectStrategy.sendRedirect(request,response, redirectUrl);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

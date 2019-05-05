@@ -5,7 +5,9 @@ import lombok.Getter;
 
 @Data
 public class BrowserProperties {
-    private String loginPage = "Login.html";
+    private String loginPage;
+    private String successUrl;
+    private String fairUrl;
 
 
 }
