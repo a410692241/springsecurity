@@ -1,13 +1,13 @@
 package com.wei.controller;
 
 import com.wei.bo.Response;
-import com.wei.bo.User;
-import com.wei.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +24,11 @@ public class BrowserController {
     private DefaultRedirectStrategy defaultRedirectStrategy = new DefaultRedirectStrategy();
 
 
+    @GetMapping("/self")
+    public Authentication getSelf(Authentication authentication) {
+        return authentication;
+    }
+
     @RequestMapping("/require")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Response require(HttpServletRequest request, HttpServletResponse response) {
@@ -39,7 +44,6 @@ public class BrowserController {
                 }
             }
         }
-        Response data = new Response("访问的服务需要身份验证,请引导到登录界面!");
-        return data;
+        return new Response("访问的服务需要身份验证,请引导到登录界面!");
     }
 }

@@ -11,6 +11,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -42,9 +46,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
 //                .antMatchers("/hello", "/Login.html").permitAll()
-//-----------------------------------------------------------------------
                 //从配置文件中提取配置,提供一个登录页url
                 .antMatchers("/auth/require", securityProperties.getBrowser().getSuccessUrl(),securityProperties.getBrowser().getFairUrl(),securityProperties.getBrowser().getLoginPage()).permitAll()
+                //这一句意味着所有的hello请求必须要有admin的角色权限才可以访问
+                .antMatchers("/hello").hasRole("admin")
                 .anyRequest().authenticated()
                 //指定自定义form表单请求的路径
                 //默认都会产生一个hiden标签 里面有安全相关的验证 防止请求伪造 这边我们暂时不需要 可禁用掉

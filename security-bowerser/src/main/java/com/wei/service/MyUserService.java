@@ -31,6 +31,7 @@ public class MyUserService implements UserDetailsService {
         return new User(userName,user.getPassword(),
                 //此处可以实现自己的业务逻辑,从而实现用户被锁,用户登录超时,用户权限组
                 true,true ,true,true,
-                AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+                //赋予的角色必须是以大写ROLE开头
+                AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_admin"));
     }
 }
